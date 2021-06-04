@@ -76,6 +76,7 @@ class ChatMessage extends StatelessWidget {
                 ),
                 Expanded(
                   child: Scrollbar(
+                    isAlwaysShown: true,
                     controller: controller,
                     child: SingleChildScrollView(
                       controller: controller,
