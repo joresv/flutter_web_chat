@@ -34472,18 +34472,18 @@ $S:1}
 F.tS.prototype={
 ay:function(){return new F.ID(H.c(["Recent Chat","Old Chat"],t.i),F.v5(0),C.l)}}
 F.ID.prototype={
-J:function(a,b){var s,r,q,p,o,n=this,m=null,l="1 minute ago",k="Most of its text is made up from sections 1.10.32\u20133 of Cicero's De finibus bonorum et malorum (On the Boundaries of Goods and Evils; finibus may also be translated as purposes).",j="last online 5 hours ago",i="3 days ago",h=$.cg()
-h=H.c([h.d,h.e],t.r8)
+J:function(a,b){var s,r,q,p,o,n=this,m=null,l="OnProgramme",k="1 minute ago",j="Most of its text is made up from sections 1.10.32\u20133 of Cicero's De finibus bonorum et malorum (On the Boundaries of Goods and Evils; finibus may also be translated as purposes).",i="last online 5 hours ago",h="3 days ago",g=$.cg()
+g=H.c([g.d,g.e],t.r8)
 s=H.c([0,0.2],t.bq)
 r=t.Z
-q=M.aZ(m,T.e3(H.c([T.cq(H.c([T.e3(H.c([L.cK("Chats",m,m,m,$.fo().a.Id(22,C.bK),m,m),new T.rn(n.d,m,"Recent Chat",m)],r),C.ai,C.z,C.A),new Z.zP("New Chat",C.rq,m)],r),C.L,C.iS,C.A),T.bE(m,20,m),new N.r5(m),T.bE(m,20,m)],r),C.L,C.z,C.A),C.k,m,m,m,m,m,m,new V.al(25,50,25,0),m,m,m)
+q=M.aZ(m,T.e3(H.c([T.cq(H.c([T.e3(H.c([L.cK(l,m,m,m,$.fo().a.Id(22,C.bK),m,m),new T.rn(n.d,m,"Recent Chat",m)],r),C.ai,C.z,C.A),new Z.zP("New Chat",C.rq,m)],r),C.L,C.iS,C.A),T.bE(m,20,m),new N.r5(m),T.bE(m,20,m)],r),C.L,C.z,C.A),C.k,m,m,m,m,m,m,new V.al(25,50,25,0),m,m,m)
 p=n.f
 o=n.a.d?new F.a36(n,b):m
 $.qA().toString
-r=H.c([M.aZ(m,T.e3(H.c([q,T.f3(E.WM(E.a8P(M.aZ(m,T.e3(H.c([G.T9(!1,!1,!1,2,o,"assets/images/Dog_1.png",C.uK,"writes",k,l,"OnProgramme"),T.bE(m,15,m),G.T9(!0,!1,!0,1,m,"assets/images/Dog_2.png",C.uJ,"records voice message","Voice message (01:15)",l,"Jores Valdes"),T.bE(m,15,m),G.T9(!1,!0,!1,m,m,"assets/images/Dog_3.png",C.lS,j,"Cicero famously orated against his political opponent Lucius Sergius Catilina.",i,"Harold Beranger"),T.bE(m,15,m),G.T9(!1,!1,!1,2,m,"assets/images/Dog_4.png",C.lS,j,k,i,"Aurore Belvine"),T.bE(m,50,m)],r),C.L,C.z,C.A),C.k,m,m,m,m,m,m,new V.al(25,0,25,0),m,m,m),p,C.b9),p,!0),1)],r),C.L,C.z,C.A),C.k,m,m,new S.bO(m,m,m,m,m,new T.f8(C.q8,C.fo,C.aM,h,s,m),C.I),m,m,m,m,m,m,m)],r)
-h=n.a
-if(h.d){h=h.c
-r.push(M.aZ(m,R.lM(!1,!0,L.dl(C.AA,m,30),m,!0,m,m,m,m,m,m,m,m,m,h,m,m,m),C.k,m,m,m,m,m,new V.al(25,20,0,0),m,m,m,m))}return T.kC(C.cb,r,C.bi,m,m)}}
+r=H.c([M.aZ(m,T.e3(H.c([q,T.f3(E.WM(E.a8P(M.aZ(m,T.e3(H.c([G.T9(!1,!1,!1,2,o,"assets/images/Dog_1.png",C.uK,"writes",j,k,l),T.bE(m,15,m),G.T9(!0,!1,!0,1,m,"assets/images/Dog_2.png",C.uJ,"records voice message","Voice message (01:15)",k,"Jores Valdes"),T.bE(m,15,m),G.T9(!1,!0,!1,m,m,"assets/images/Dog_3.png",C.lS,i,"Cicero famously orated against his political opponent Lucius Sergius Catilina.",h,"Harold Beranger"),T.bE(m,15,m),G.T9(!1,!1,!1,2,m,"assets/images/Dog_4.png",C.lS,i,j,h,"Aurore Belvine"),T.bE(m,50,m)],r),C.L,C.z,C.A),C.k,m,m,m,m,m,m,new V.al(25,0,25,0),m,m,m),p,C.b9),p,!0),1)],r),C.L,C.z,C.A),C.k,m,m,new S.bO(m,m,m,m,m,new T.f8(C.q8,C.fo,C.aM,g,s,m),C.I),m,m,m,m,m,m,m)],r)
+g=n.a
+if(g.d){g=g.c
+r.push(M.aZ(m,R.lM(!1,!0,L.dl(C.AA,m,30),m,!0,m,m,m,m,m,m,m,m,m,g,m,m,m),C.k,m,m,m,m,m,new V.al(25,20,0,0),m,m,m,m))}return T.kC(C.cb,r,C.bi,m,m)}}
 F.a36.prototype={
 $0:function(){K.ol(this.b).p2(V.ac2(new F.a35(this.a),null,t.z))},
 $S:1}
