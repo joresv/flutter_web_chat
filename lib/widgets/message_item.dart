@@ -74,14 +74,16 @@ class MessageItem extends StatelessWidget {
                   statutMessage: statutMessage,
                   username: username,
                 ),
-                Text(
-                  time,
-                  overflow: TextOverflow.ellipsis,
-                  style: Config.styles.prymaryTextStyle.copyWith(
-                      fontSize: 12,
-                      color: isSelected
-                          ? Colors.white
-                          : Config.colors.textColorMenu),
+                Expanded(
+                  child: Text(
+                    time,
+                    overflow: TextOverflow.ellipsis,
+                    style: Config.styles.prymaryTextStyle.copyWith(
+                        fontSize: 12,
+                        color: isSelected
+                            ? Colors.white
+                            : Config.colors.textColorMenu),
+                  ),
                 ),
               ],
             ),

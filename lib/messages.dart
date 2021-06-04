@@ -64,7 +64,7 @@ class _MessagesState extends State<Messages> {
                         ),
                         CButton(
                           prefix: Icons.add,
-                          title: "Create new Chat",
+                          title: "New Chat",
                           onTap: () {},
                         )
                       ],
