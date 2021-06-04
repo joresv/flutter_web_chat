@@ -10,7 +10,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    // print(width);
+    print(width);
     return Scaffold(
       key: _key,
       drawer: width >= 999 ? null : Container(width: 250, child: Menu()),
@@ -23,10 +23,11 @@ class HomePage extends StatelessWidget {
               height: height,
               child: Row(
                 children: [
-                  if (width >= 999)
+                  // width <= 839 && width >= 839 ? 10 :
+                  if (width > 869)
                     Expanded(
                       child: Menu(),
-                      flex: 3,
+                      flex: width < 900 && width > 800 ? 4 : 3,
                     ),
                   Expanded(
                     child: Messages(
@@ -37,10 +38,10 @@ class HomePage extends StatelessWidget {
                     ),
                     flex: 7,
                   ),
-                  if (width > 839)
+                  if (width >= 622)
                     Expanded(
                       child: ChatMessage(),
-                      flex: width <= 839 ? 10 : 8,
+                      flex: width < 889 && width > 800 ? 10 : 8,
                     ),
                 ],
               ),

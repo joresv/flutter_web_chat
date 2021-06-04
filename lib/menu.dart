@@ -53,7 +53,7 @@ class _MenuState extends State<Menu> {
                             Text(
                               "Henry Jabbawockiez",
                               style: Config.styles.prymaryTextStyle
-                                  .copyWith(fontSize: 14.5),
+                                  .copyWith(fontSize: 12.5),
                             ),
                             SizedBox(
                               width: 5,
