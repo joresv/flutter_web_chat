@@ -39,8 +39,8 @@ const RESOURCES = {
 "assets/assets/images/Dog_1.png": "12f21d9de6366cd0312b3ad05544dbff",
 "assets/FontManifest.json": "beb7bba12d12a6e092f9fb4c7bdcd037",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
-"index.html": "fae1ba03669323cdd90fa26917061b49",
-"/": "fae1ba03669323cdd90fa26917061b49"
+"index.html": "c4adebc01c9b270e064745550a8ef719",
+"/": "c4adebc01c9b270e064745550a8ef719"
 };
 
 // The application shell files that are downloaded before a service worker can
