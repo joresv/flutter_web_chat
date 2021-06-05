@@ -89,30 +89,18 @@ class ChatMessage extends StatelessWidget {
                               message:
                                   "Hello OnProgramme! Finally found the time to write to you) I need your help in creating interactive animations for my mobile application.",
                             ),
-                            SizedBox(
-                              height: 10,
-                            ),
                             MessageComponent(
                               plateform: plateform,
                               message: "Can I send you files?",
-                            ),
-                            SizedBox(
-                              height: 10,
                             ),
                             MessageComponent(
                               plateform: plateform,
                               message: "Hey! Okay, send out.",
                               isMe: true,
                             ),
-                            SizedBox(
-                              height: 10,
-                            ),
                             MessageComponent(
                               plateform: plateform,
                               myFile: MyFile(size: 41.36, title: "Style.zip"),
-                            ),
-                            SizedBox(
-                              height: 10,
                             ),
                             CustomDivider(
                               title: "3 day ago",
@@ -125,10 +113,25 @@ class ChatMessage extends StatelessWidget {
                               myFile:
                                   MyFile(size: 41.36, title: " New_Style.zip"),
                             ),
-                            SizedBox(
-                              height: 10,
+                            MessageComponent(
+                              plateform: plateform,
+                              message:
+                                  "Hello OnProgramme! Finally found the time to write to you) I need your help in creating interactive animations for my mobile application.",
                             ),
                             MessageComponent(
+                              plateform: plateform,
+                              message:
+                                  "Hello! I tweaked everything you asked. I am sending the finished file",
+                              myFile:
+                                  MyFile(size: 41.36, title: " New_Style.zip"),
+                            ),
+                            MessageComponent(
+                              plateform: plateform,
+                              message: "Salut moi c'est jores et toi",
+                              isMe: true,
+                            ),
+                            MessageComponent(
+                              isMe: true,
                               plateform: plateform,
                               message:
                                   "Hello OnProgramme! Finally found the time to write to you) I need your help in creating interactive animations for my mobile application.",

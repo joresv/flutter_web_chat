@@ -17,6 +17,7 @@ class Menu extends StatefulWidget {
 
 class _MenuState extends State<Menu> {
   MenuItemSelect selectItem = MenuItemSelect.HOME;
+  ScrollController controller = ScrollController();
 
   void changeValue(value) {
     selectItem = value;
@@ -36,83 +37,89 @@ class _MenuState extends State<Menu> {
       child: Column(
         children: [
           Expanded(
-            child: Column(
-              children: [
-                Container(
-                    padding: EdgeInsets.only(top: 50, bottom: 40),
-                    child: Column(
-                      children: [
-                        CircleAvatar(
-                          backgroundColor: Colors.white,
-                          radius: 40,
-                          backgroundImage: AssetImage(Config.assets.user),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
+            child: Scrollbar(
+              isAlwaysShown: true,
+              controller: controller,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Container(
+                        padding: EdgeInsets.only(top: 50, bottom: 40),
+                        child: Column(
                           children: [
-                            Text(
-                              "Henry Jabbawockiez",
-                              style: Config.styles.prymaryTextStyle
-                                  .copyWith(fontSize: 12.5),
+                            CircleAvatar(
+                              backgroundColor: Colors.white,
+                              radius: 40,
+                              backgroundImage: AssetImage(Config.assets.user),
                             ),
-                            SizedBox(
-                              width: 5,
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(top: 2),
-                              child: SvgIcon(
-                                asset: Config.assets.arrow_down,
-                                color: Config.colors.primaryBlackColor,
-                                size: 15,
-                              ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Henry Jabbawockiez",
+                                  style: Config.styles.prymaryTextStyle
+                                      .copyWith(fontSize: 12.5),
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(top: 2),
+                                  child: SvgIcon(
+                                    asset: Config.assets.arrow_down,
+                                    color: Config.colors.primaryBlackColor,
+                                    size: 15,
+                                  ),
+                                )
+                              ],
                             )
                           ],
-                        )
-                      ],
-                    )),
-                MenuItem(
-                  title: "Home",
-                  groupValue: MenuItemSelect.HOME,
-                  value: selectItem,
-                  onChanged: changeValue,
-                  icon: FeatherIcons.grid,
+                        )),
+                    MenuItem(
+                      title: "Home",
+                      groupValue: MenuItemSelect.HOME,
+                      value: selectItem,
+                      onChanged: changeValue,
+                      icon: FeatherIcons.grid,
+                    ),
+                    MenuItem(
+                      title: "Chat",
+                      groupValue: MenuItemSelect.CHAT,
+                      value: selectItem,
+                      onChanged: changeValue,
+                      icon: FontAwesomeIcons.commentDots,
+                    ),
+                    MenuItem(
+                      title: "Contact",
+                      groupValue: MenuItemSelect.CONTACT,
+                      value: selectItem,
+                      onChanged: changeValue,
+                      icon: FeatherIcons.user,
+                    ),
+                    MenuItem(
+                      title: "Notification",
+                      groupValue: MenuItemSelect.NOTIIFICATION,
+                      value: selectItem,
+                      onChanged: changeValue,
+                      icon: FeatherIcons.bell,
+                    ),
+                    MenuItem(
+                      title: "Calendrier",
+                      groupValue: MenuItemSelect.CALENDAR,
+                      value: selectItem,
+                      onChanged: changeValue,
+                      icon: FeatherIcons.calendar,
+                    ),
+                    MenuItem(
+                      title: "Paramètres",
+                      groupValue: MenuItemSelect.SETTINGS,
+                      value: selectItem,
+                      onChanged: changeValue,
+                      icon: FeatherIcons.settings,
+                    ),
+                  ],
                 ),
-                MenuItem(
-                  title: "Chat",
-                  groupValue: MenuItemSelect.CHAT,
-                  value: selectItem,
-                  onChanged: changeValue,
-                  icon: FontAwesomeIcons.commentDots,
-                ),
-                MenuItem(
-                  title: "Contact",
-                  groupValue: MenuItemSelect.CONTACT,
-                  value: selectItem,
-                  onChanged: changeValue,
-                  icon: FeatherIcons.user,
-                ),
-                MenuItem(
-                  title: "Notification",
-                  groupValue: MenuItemSelect.NOTIIFICATION,
-                  value: selectItem,
-                  onChanged: changeValue,
-                  icon: FeatherIcons.bell,
-                ),
-                MenuItem(
-                  title: "Calendrier",
-                  groupValue: MenuItemSelect.CALENDAR,
-                  value: selectItem,
-                  onChanged: changeValue,
-                  icon: FeatherIcons.calendar,
-                ),
-                MenuItem(
-                  title: "Paramètres",
-                  groupValue: MenuItemSelect.SETTINGS,
-                  value: selectItem,
-                  onChanged: changeValue,
-                  icon: FeatherIcons.settings,
-                ),
-              ],
+              ),
             ),
           ),
           MenuItem(

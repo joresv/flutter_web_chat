@@ -31,7 +31,7 @@ class HomePage extends StatelessWidget {
                     ),
                   Expanded(
                     child: Messages(
-                      showMenu: width <= 999,
+                      showMenu: width <= 869,
                       onOpenMenu: () {
                         _key.currentState.openDrawer();
                       },
