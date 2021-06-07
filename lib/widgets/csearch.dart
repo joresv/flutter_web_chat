@@ -1,19 +1,21 @@
 import 'package:chat_web/config/config.dart';
-import 'package:chat_web/widgets/custom_dropdown.dart';
+import 'package:chat_web/widgets/cdropdown.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 
-class CSearch extends StatefulWidget {
+class CustomSearch extends StatefulWidget {
   @override
-  _CSearchState createState() => _CSearchState();
+  _CustomSearchState createState() => _CustomSearchState();
 }
 
-class _CSearchState extends State<CSearch> {
-  String selectValue = "Messages";
+class _CustomSearchState extends State<CustomSearch> {
+  String value = "Messages";
+
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20),
+      height: 50,
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(6),
@@ -23,11 +25,12 @@ class _CSearchState extends State<CSearch> {
                 offset: Offset(0, 0),
                 blurRadius: 0)
           ]),
-      height: 50,
       child: Row(
         children: [
           Expanded(
               child: TextFormField(
+            style: Config.styles.prymaryTextStyle
+                .copyWith(color: Config.colors.textColorMenu),
             decoration: InputDecoration(
                 prefixIcon: Icon(
                   FeatherIcons.search,
@@ -38,15 +41,13 @@ class _CSearchState extends State<CSearch> {
                 hintText: "Search",
                 border: OutlineInputBorder(borderSide: BorderSide.none)),
           )),
-          CustomDropdown(
-            items: ["Messages", "Voices", "Fichier"],
-            value: selectValue,
-            onChanged: (value) {
-              print(value);
-              selectValue = value;
-              setState(() {});
-            },
-          )
+          CustomDropDown(
+              items: ["Messages", "Voices", "Files"],
+              onChanded: (e) {
+                value = e;
+                setState(() {});
+              },
+              value: value)
         ],
       ),
     );

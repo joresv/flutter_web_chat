@@ -1,24 +1,25 @@
 import 'package:chat_web/config/config.dart';
+import 'package:chat_web/models/file.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 
 class MessageComponent extends StatelessWidget {
-  final bool isMe;
-  final bool plateform;
+  final bool isMe, platform;
   final String message;
-  final MyFile myFile;
+  final MyFile file;
+
   const MessageComponent(
       {Key key,
       this.isMe = false,
       this.message,
-      this.myFile,
-      this.plateform = false})
+      this.file,
+      this.platform = false})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return Container(
-      margin: EdgeInsets.only(bottom: 10),
+      margin: EdgeInsets.only(bottom: 15),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment:
@@ -35,15 +36,14 @@ class MessageComponent extends StatelessWidget {
               if (isMe)
                 Icon(
                   FeatherIcons.moreHorizontal,
-                  color: Config.colors.textColorMenu,
                   size: 18,
+                  color: Config.colors.textColorMenu,
                 ),
               Container(
-                margin: EdgeInsets.only(left: 10, right: 10),
-                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                 constraints: BoxConstraints(
-                    maxWidth:
-                        plateform && width < 840 ? width / 1.5 : width / 4),
+                    maxWidth: platform ? width / 1.5 : width / 4),
+                margin: EdgeInsets.symmetric(horizontal: 10),
+                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                 decoration: BoxDecoration(
                     boxShadow: [
                       if (!isMe) ...[
@@ -78,14 +78,8 @@ class MessageComponent extends StatelessWidget {
                                 .withOpacity(.15),
                             offset: Offset(6, 6),
                             blurRadius: 10),
-                      ]
+                      ],
                     ],
-                    borderRadius: BorderRadius.only(
-                        bottomLeft: radius(10),
-                        bottomRight: radius(10),
-                        topRight: !isMe ? radius(10) : radius(0),
-                        topLeft: !isMe ? radius(0) : radius(10)),
-                    color: isMe ? Colors.white : Config.colors.primaryColor,
                     gradient: isMe
                         ? null
                         : LinearGradient(
@@ -93,10 +87,19 @@ class MessageComponent extends StatelessWidget {
                             end: Alignment.bottomLeft,
                             // radius: 10,
                             colors: [
-                                Config.colors.primaryColor,
-                                Config.colors.primaryColor,
-                                Config.colors.primaryColor.withOpacity(.5),
-                              ])),
+                              Config.colors.primaryColor,
+                              Config.colors.primaryColor,
+                              Config.colors.primaryColor.withOpacity(.5),
+                            ],
+                          ),
+                    color: isMe ? Colors.white : Config.colors.primaryColor,
+                    borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(10),
+                        bottomRight: Radius.circular(10),
+                        topRight:
+                            isMe ? Radius.circular(0) : Radius.circular(10),
+                        topLeft:
+                            isMe ? Radius.circular(10) : Radius.circular(0))),
                 child: Column(
                   crossAxisAlignment:
                       !isMe ? CrossAxisAlignment.start : CrossAxisAlignment.end,
@@ -110,39 +113,40 @@ class MessageComponent extends StatelessWidget {
                                 : Colors.white,
                             fontSize: 13),
                       ),
-                      if (myFile != null) ...[
+                      if (file != null) ...[
                         SizedBox(
                           height: 10,
                         ),
                         FileWidget(
+                          file: file,
                           isMe: isMe,
-                          myFile: myFile,
                         )
                       ]
                     ] else ...[
                       Row(
-                        mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
                         children: [
-                          Container(
-                            padding: EdgeInsets.all(8),
-                            decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(.25),
-                                borderRadius: BorderRadius.circular(6)),
-                            child: Icon(
-                              FeatherIcons.file,
-                              size: 15,
-                              color: Colors.white,
+                          if (!isMe) ...[
+                            Container(
+                              padding: EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(6),
+                                  color: Colors.white.withOpacity(.5)),
+                              child: Icon(
+                                FeatherIcons.file,
+                                size: 15,
+                                color: Colors.white,
+                              ),
                             ),
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                          ],
                           Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                myFile.title,
+                                file.name,
                                 style: Config.styles.prymaryTextStyle.copyWith(
                                     fontWeight: FontWeight.bold,
                                     color: !isMe
@@ -150,7 +154,7 @@ class MessageComponent extends StatelessWidget {
                                         : Config.colors.textColorMenu),
                               ),
                               Text(
-                                "${myFile.size} Mb",
+                                "${file.size} Mb",
                                 style: Config.styles.prymaryTextStyle.copyWith(
                                     fontSize: 10,
                                     fontWeight: FontWeight.normal,
@@ -159,7 +163,25 @@ class MessageComponent extends StatelessWidget {
                                         : Config.colors.textColorMenu),
                               ),
                             ],
-                          )
+                          ),
+                          if (isMe) ...[
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Container(
+                              padding: EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(6),
+                                  border: Border.all(
+                                      color: Config.colors.textColorMenu),
+                                  color: Colors.white.withOpacity(.5)),
+                              child: Icon(
+                                FeatherIcons.file,
+                                size: 15,
+                                color: Config.colors.textColorMenu,
+                              ),
+                            ),
+                          ],
                         ],
                       )
                     ]
@@ -176,57 +198,18 @@ class MessageComponent extends StatelessWidget {
                 FullCheck()
               ]
             ],
-          ),
+          )
         ],
       ),
-    );
-  }
-
-  radius(double value) {
-    return Radius.circular(value);
-  }
-}
-
-class MyFile {
-  String title;
-  double size;
-  MyFile({this.size, this.title});
-}
-
-class FullCheck extends StatelessWidget {
-  final double size;
-  final bool isChecked;
-  final Color checkColor;
-  FullCheck({Key key, this.size = 15, this.isChecked = false, this.checkColor})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Icon(
-          FeatherIcons.check,
-          size: size,
-          color: checkColor ?? Config.colors.checkColor,
-        ),
-        Container(
-            margin: EdgeInsets.only(left: 5),
-            child: Icon(
-              FeatherIcons.check,
-              size: size,
-              color: checkColor ?? Config.colors.checkColor,
-            )),
-      ],
     );
   }
 }
 
 class FileWidget extends StatelessWidget {
+  final MyFile file;
   final bool isMe;
-  final MyFile myFile;
 
-  const FileWidget({Key key, this.isMe, this.myFile}) : super(key: key);
-
+  const FileWidget({Key key, this.file, this.isMe}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -239,7 +222,7 @@ class FileWidget extends StatelessWidget {
               color: !isMe ? Colors.white : Config.colors.primaryColor),
         Expanded(
           flex: 2,
-          child: Text("(${myFile.size} Mb)${myFile.title}",
+          child: Text("(${file.size} Mb)${file.name}",
               textAlign: isMe ? TextAlign.start : TextAlign.end,
               overflow: TextOverflow.ellipsis,
               style: Config.styles.prymaryTextStyle.copyWith(
@@ -251,6 +234,72 @@ class FileWidget extends StatelessWidget {
               size: 13,
               color: !isMe ? Colors.white : Config.colors.primaryColor),
       ],
+    );
+  }
+}
+
+class FullCheck extends StatelessWidget {
+  final double size;
+  final bool isChecked;
+  final Color checkColor1, checkColor2;
+  FullCheck(
+      {Key key,
+      this.size = 15,
+      this.isChecked = false,
+      this.checkColor1,
+      this.checkColor2})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Icon(
+          FeatherIcons.check,
+          size: size,
+          color: checkColor1 ?? Config.colors.checkColor,
+        ),
+        Container(
+            margin: EdgeInsets.only(left: 5),
+            child: Icon(
+              FeatherIcons.check,
+              size: size,
+              color: checkColor2 ?? Config.colors.checkColor,
+            )),
+      ],
+    );
+  }
+}
+
+class CustomDivider extends StatelessWidget {
+  final String date;
+
+  const CustomDivider({Key key, this.date}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 20),
+      child: Row(
+        children: [
+          Expanded(
+              child: Divider(
+            color: Config.colors.textColorMenu.withOpacity(.15),
+          )),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 10),
+            child: Text(
+              date,
+              style: Config.styles.prymaryTextStyle.copyWith(
+                  fontSize: 11,
+                  color: Config.colors.textColorMenu.withOpacity(.7)),
+            ),
+          ),
+          Expanded(
+              child: Divider(
+            color: Config.colors.textColorMenu.withOpacity(.15),
+          )),
+        ],
+      ),
     );
   }
 }

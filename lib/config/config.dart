@@ -46,4 +46,12 @@ class _Style {
       fontWeight: FontWeight.normal);
 }
 
-enum MenuItemSelect { HOME, CHAT, CONTACT, NOTIIFICATION, CALENDAR, SETTINGS }
+enum MenuItemSelect {
+  HOME,
+  CHAT,
+  CONTACT,
+  NOTIIFICATION,
+  CALENDAR,
+  SETTINGS,
+  LOGOUT
+}

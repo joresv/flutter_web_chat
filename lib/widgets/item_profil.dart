@@ -1,22 +1,12 @@
 import 'package:chat_web/config/config.dart';
-import 'package:chat_web/svgIcon.dart';
-import 'package:chat_web/widgets/message_item.dart';
+import 'package:chat_web/models/msg_model_list.dart';
+import 'package:chat_web/widgets/svgIcon.dart';
 import 'package:flutter/material.dart';
 
-class ItemProfil extends StatelessWidget {
-  final String username, profil_asset, statutMessage;
-  final bool isSelected;
-  final StatusType statut;
+class Itemprofil extends StatelessWidget {
+  final MessageModelList msgModel;
 
-  const ItemProfil(
-      {Key key,
-      this.username,
-      this.profil_asset,
-      this.statutMessage,
-      this.isSelected = false,
-      this.statut})
-      : super(key: key);
-
+  Itemprofil({this.msgModel});
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -25,7 +15,7 @@ class ItemProfil extends StatelessWidget {
       children: [
         CircleAvatar(
           backgroundColor: Colors.white,
-          backgroundImage: AssetImage(profil_asset),
+          backgroundImage: AssetImage(msgModel.profil_asset),
         ),
         SizedBox(
           width: 10,
@@ -33,35 +23,36 @@ class ItemProfil extends StatelessWidget {
         Container(
           margin: EdgeInsets.only(top: 3),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                username,
+                msgModel.username,
                 style: Config.styles.prymaryTextStyle
                     .copyWith(fontWeight: FontWeight.bold, fontSize: 13),
               ),
-              if (statutMessage != null)
+              if (msgModel.statutMessage != null)
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    if (statut != null && statut != StatusType.LAST_AGO) ...[
+                    if (msgModel.statut != null &&
+                        msgModel.statut != StatusType.LAST_AGO) ...[
                       SvgIcon(
-                          size: statut == StatusType.WRITE ? 4 : 10,
-                          color: isSelected
+                          size: msgModel.statut == StatusType.WRITE ? 4 : 10,
+                          color: msgModel.isSelected
                               ? Colors.white
                               : Config.colors.primaryColor,
-                          asset: statut == StatusType.RECORD
+                          asset: msgModel.statut == StatusType.RECORD
                               ? Config.assets.record
                               : Config.assets.write),
                       SizedBox(
                         width: 5,
-                      ),
+                      )
                     ],
                     Text(
-                      statutMessage,
+                      msgModel.statutMessage,
                       style: Config.styles.prymaryTextStyle.copyWith(
-                          color: isSelected
+                          color: msgModel.isSelected
                               ? Colors.white
                               : Config.colors.primaryColor,
                           fontSize: 11),
@@ -70,7 +61,7 @@ class ItemProfil extends StatelessWidget {
                 )
             ],
           ),
-        ),
+        )
       ],
     );
   }

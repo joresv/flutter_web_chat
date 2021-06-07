@@ -1,4 +1,5 @@
-import 'package:chat_web/home.dart';
+import 'package:chat_web/config/config.dart';
+import 'package:chat_web/screens/home.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,12 +11,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Chat app',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        fontFamily: "TTNorms",
-      ),
+      title: 'Chat web',
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+          primaryColor: Config.colors.primaryColor, fontFamily: "TTNorms"),
       home: HomePage(),
     );
   }
