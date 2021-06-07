@@ -34586,7 +34586,7 @@ J:function(a4,a5){var s,r,q,p,o,n,m,l,k,j,i,h,g,f,e,d=this,c=null,b=a5.X(t.w).f.
 if(a3){$.qB().toString
 a2.push(K.a7U(C.j,new L.lb("assets/images/Dog_3.png"),12))}s=H.c([],a1)
 if(a)s.push(L.d_(C.re,$.bL().c,18))
-r=d.d?b/1.5:b/4
+r=d.d?b/1.58:b/4
 q=t.X
 p=H.c([],q)
 if(a3){o=$.bL()
