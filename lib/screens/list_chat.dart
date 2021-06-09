@@ -9,16 +9,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 
 class ListChat extends StatefulWidget {
-  final Function onMenuOpen;
+  final Function onOpenMenu;
 
-  const ListChat({Key key, this.onMenuOpen}) : super(key: key);
+  const ListChat({Key key, this.onOpenMenu}) : super(key: key);
   @override
   _ListChatState createState() => _ListChatState();
 }
 
 class _ListChatState extends State<ListChat> {
   String recentValue = "Recent Message";
-  ScrollController controller = ScrollController();
+  var controller = ScrollController();
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -79,93 +79,92 @@ class _ListChatState extends State<ListChat> {
                 ),
               ),
               Expanded(
-                  child: Scrollbar(
-                isAlwaysShown: true,
-                controller: controller,
-                child: SingleChildScrollView(
+                  child: Center(
+                child: Scrollbar(
+                  isAlwaysShown: true,
                   controller: controller,
-                  child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 25),
-                    child: Column(
-                      children: [
-                        MessageItemlist(
-                          onTap: width > 681
-                              ? null
-                              : () {
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (_) => ChatMessage(
-                                            platform: true,
-                                          )));
-                                },
-                          msg: MessageModelList(
-                              statut: StatusType.WRITE,
-                              username: "OnProgramme",
-                              statutMessage: "writes",
-                              notif: 4,
-                              time: "1 minute ago",
-                              profil_asset: Config.assets.user1,
-                              textMessage:
-                                  "Most of its text is made up from sections 1.10.32–3 of Cicero's De finibus bonorum et malorum (On the Boundaries of Goods and Evils; finibus may also be translated as purposes)."),
-                        ),
-                        MessageItemlist(
-                          msg: MessageModelList(
-                              statut: StatusType.RECORD,
-                              isVoice: true,
-                              haveFile: true,
+                  child: SingleChildScrollView(
+                    controller: controller,
+                    child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 25),
+                      child: Column(
+                        children: [
+                          MessageItemlist(
+                            onTap: () {
+                              if (width <= 681)
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (_) => ChatMessage()));
+                            },
+                            msg: MessageModelList(
+                                statut: StatusType.WRITE,
+                                username: "OnProgramme",
+                                statutMessage: "writes",
+                                notif: 4,
+                                time: "1 minute ago",
+                                profil_asset: Config.assets.user1,
+                                textMessage:
+                                    "Most of its text is made up from sections 1.10.32–3 of Cicero's De finibus bonorum et malorum (On the Boundaries of Goods and Evils; finibus may also be translated as purposes)."),
+                          ),
+                          MessageItemlist(
+                            msg: MessageModelList(
+                                statut: StatusType.RECORD,
+                                isVoice: true,
+                                haveFile: true,
+                                notif: 2,
+                                username: "OnProgramme",
+                                statutMessage: "records voice message",
+                                time: "1 minute ago",
+                                profil_asset: Config.assets.user2,
+                                textMessage: "Voice message (01:15)"),
+                          ),
+                          MessageItemlist(
+                            msg: MessageModelList(
+                                statut: StatusType.RECORD,
+                                isSelected: true,
+                                username: "Harold Beranger",
+                                statutMessage: "last online 5 hours ago",
+                                time: "3 days ago",
+                                profil_asset: Config.assets.user3,
+                                textMessage:
+                                    "Cicero famously orated against his political opponent Lucius Sergius Catilina."),
+                          ),
+                          MessageItemlist(
+                            msg: MessageModelList(
+                              profil_asset: Config.assets.user4,
                               notif: 2,
-                              username: "OnProgramme",
-                              statutMessage: "records voice message",
-                              time: "1 minute ago",
-                              profil_asset: Config.assets.user2,
-                              textMessage: "Voice message (01:15)"),
-                        ),
-                        MessageItemlist(
-                          msg: MessageModelList(
-                              statut: StatusType.RECORD,
-                              isSelected: true,
-                              username: "Harold Beranger",
+                              statut: StatusType.LAST_AGO,
+                              username: "Aurore Belvine",
                               statutMessage: "last online 5 hours ago",
                               time: "3 days ago",
-                              profil_asset: Config.assets.user3,
                               textMessage:
-                                  "Cicero famously orated against his political opponent Lucius Sergius Catilina."),
-                        ),
-                        MessageItemlist(
-                          msg: MessageModelList(
-                            profil_asset: Config.assets.user4,
-                            notif: 2,
-                            statut: StatusType.LAST_AGO,
-                            username: "Aurore Belvine",
-                            statutMessage: "last online 5 hours ago",
-                            time: "3 days ago",
-                            textMessage:
-                                "Most of its text is made up from sections 1.10.32–3 of Cicero's De finibus bonorum et malorum (On the Boundaries of Goods and Evils; finibus may also be translated as purposes).",
+                                  "Most of its text is made up from sections 1.10.32–3 of Cicero's De finibus bonorum et malorum (On the Boundaries of Goods and Evils; finibus may also be translated as purposes).",
+                            ),
                           ),
-                        ),
-                        MessageItemlist(
-                          msg: MessageModelList(
-                              statut: StatusType.RECORD,
-                              isVoice: true,
-                              haveFile: true,
-                              notif: 2,
-                              username: "OnProgramme",
-                              statutMessage: "records voice message",
-                              time: "1 minute ago",
-                              profil_asset: Config.assets.user2,
-                              textMessage: "Voice message (01:15)"),
-                        ),
-                        MessageItemlist(
-                          msg: MessageModelList(
-                              statut: StatusType.WRITE,
-                              username: "OnProgramme",
-                              statutMessage: "writes",
-                              notif: 4,
-                              time: "1 minute ago",
-                              profil_asset: Config.assets.user1,
-                              textMessage:
-                                  "Most of its text is made up from sections 1.10.32–3 of Cicero's De finibus bonorum et malorum (On the Boundaries of Goods and Evils; finibus may also be translated as purposes)."),
-                        ),
-                      ],
+                          MessageItemlist(
+                            msg: MessageModelList(
+                                statut: StatusType.RECORD,
+                                isVoice: true,
+                                haveFile: true,
+                                notif: 2,
+                                username: "OnProgramme",
+                                statutMessage: "records voice message",
+                                time: "1 minute ago",
+                                profil_asset: Config.assets.user2,
+                                textMessage: "Voice message (01:15)"),
+                          ),
+                          MessageItemlist(
+                            msg: MessageModelList(
+                                statut: StatusType.WRITE,
+                                username: "OnProgramme",
+                                statutMessage: "writes",
+                                notif: 4,
+                                time: "1 minute ago",
+                                profil_asset: Config.assets.user1,
+                                textMessage:
+                                    "Most of its text is made up from sections 1.10.32–3 of Cicero's De finibus bonorum et malorum (On the Boundaries of Goods and Evils; finibus may also be translated as purposes)."),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -173,15 +172,16 @@ class _ListChatState extends State<ListChat> {
             ],
           ),
         ),
-        if (widget.onMenuOpen != null)
+        if (widget.onOpenMenu != null)
           Container(
             margin: EdgeInsets.only(left: 25, top: 20),
             child: InkWell(
-                onTap: widget.onMenuOpen,
-                child: Icon(
-                  FeatherIcons.menu,
-                  size: 30,
-                )),
+              child: Icon(
+                FeatherIcons.menu,
+                size: 30,
+              ),
+              onTap: widget.onOpenMenu,
+            ),
           )
       ],
     );

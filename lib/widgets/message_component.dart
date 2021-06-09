@@ -4,20 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 
 class MessageComponent extends StatelessWidget {
-  final bool isMe, platform;
   final String message;
   final MyFile file;
+  final bool isMe;
 
-  const MessageComponent(
-      {Key key,
-      this.isMe = false,
-      this.message,
-      this.file,
-      this.platform = false})
+  const MessageComponent({Key key, this.isMe = false, this.message, this.file})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
+    bool isMobile = width <= 681;
     return Container(
       margin: EdgeInsets.only(bottom: 15),
       child: Row(
@@ -41,7 +37,7 @@ class MessageComponent extends StatelessWidget {
                 ),
               Container(
                 constraints: BoxConstraints(
-                    maxWidth: platform ? width / 1.5 : width / 4),
+                    maxWidth: isMobile ? width / 1.6 : width / 4),
                 margin: EdgeInsets.symmetric(horizontal: 10),
                 padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                 decoration: BoxDecoration(

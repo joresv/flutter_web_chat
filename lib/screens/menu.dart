@@ -16,8 +16,7 @@ class _MenuState extends State<Menu> {
     setState(() {});
   }
 
-  ScrollController controller = ScrollController();
-
+  var controller = ScrollController();
   @override
   Widget build(BuildContext context) {
     return Container(

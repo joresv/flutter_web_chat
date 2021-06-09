@@ -9,16 +9,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 
 class ChatMessage extends StatelessWidget {
-  final bool platform;
-
-  ChatMessage({Key key, this.platform = false}) : super(key: key);
-  ScrollController controller = ScrollController();
+  var controller = ScrollController();
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    bool isMobile = width <= 681;
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: platform
+          padding: isMobile
               ? EdgeInsets.zero
               : EdgeInsets.only(top: 50, left: 5, right: 15, bottom: 25),
           child: Container(
@@ -32,7 +31,7 @@ class ChatMessage extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                  padding: EdgeInsets.fromLTRB(platform ? 10 : 35, 20, 30, 15),
+                  padding: EdgeInsets.fromLTRB(isMobile ? 10 : 35, 20, 30, 15),
                   decoration: BoxDecoration(
                       border: Border(
                           bottom:
@@ -40,10 +39,13 @@ class ChatMessage extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      if (platform)
+                      if (isMobile)
                         InkWell(
-                            onTap: () => Navigator.of(context).pop(),
-                            child: Icon(Icons.arrow_back)),
+                          child: Icon(Icons.arrow_back),
+                          onTap: () {
+                            Navigator.of(context).pop();
+                          },
+                        ),
                       Itemprofil(
                         msgModel: MessageModelList(
                           username: "Harold Beranger",
@@ -69,8 +71,8 @@ class ChatMessage extends StatelessWidget {
                 ),
                 Expanded(
                     child: Scrollbar(
-                  isAlwaysShown: true,
                   controller: controller,
+                  isAlwaysShown: true,
                   child: SingleChildScrollView(
                     controller: controller,
                     child: Container(
@@ -78,74 +80,61 @@ class ChatMessage extends StatelessWidget {
                       child: Column(
                         children: [
                           MessageComponent(
-                            platform: platform,
                             message:
                                 "Hello OnProgramme! Finally found the time to write to you) I need your help in creating interactive animations for my mobile application.",
                           ),
                           MessageComponent(
-                            platform: platform,
                             message: "Can I send you files?",
                           ),
                           MessageComponent(
-                            platform: platform,
                             message: "Hey! Okay, send out.",
                             isMe: true,
                           ),
                           MessageComponent(
-                            platform: platform,
                             file: MyFile(size: 41.36, name: "Style.zip"),
                           ),
                           CustomDivider(
                             date: "3 days ago",
                           ),
                           MessageComponent(
-                            platform: platform,
                             isMe: true,
                             message:
                                 "Hello! I tweaked everything you asked. I am sending the finished file",
                             file: MyFile(size: 41.36, name: " New_Style.zip"),
                           ),
                           MessageComponent(
-                            platform: platform,
                             isMe: true,
                             message:
                                 "Hello OnProgramme! Finally found the time to write to you) I need your help in creating interactive animations for my mobile application.",
                           ),
                           MessageComponent(
-                            platform: platform,
                             message:
                                 "Hello! I tweaked everything you asked. I am sending the finished file",
                             file: MyFile(size: 41.36, name: " New_Style.zip"),
                           ),
                           MessageComponent(
-                            platform: platform,
                             isMe: true,
                             file: MyFile(size: 41.36, name: "Style.zip"),
                           ),
                           MessageComponent(
-                            platform: platform,
                             message: "Salut moi c'est jores et toi",
                             isMe: true,
                           ),
                           MessageComponent(
-                            platform: platform,
                             isMe: true,
                             message:
                                 "Hello OnProgramme! Finally found the time to write to you) I need your help in creating interactive animations for my mobile application.",
                           ),
                           MessageComponent(
-                            platform: platform,
                             message:
                                 "Hello! I tweaked everything you asked. I am sending the finished file",
                             file: MyFile(size: 41.36, name: " New_Style.zip"),
                           ),
                           MessageComponent(
-                            platform: platform,
                             message: "Salut moi c'est jores et toi",
                             isMe: true,
                           ),
                           MessageComponent(
-                            platform: platform,
                             message:
                                 "Hello! I tweaked everything you asked. I am sending the finished file",
                             file: MyFile(size: 41.36, name: " New_Style.zip"),

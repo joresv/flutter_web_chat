@@ -9,10 +9,10 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    // print(width);
+    print(width);
     return Scaffold(
       key: _key,
-      drawer: width > 881
+      drawer: width > 900
           ? null
           : Container(
               width: 250,
@@ -23,11 +23,11 @@ class HomePage extends StatelessWidget {
         height: height,
         child: Row(
           children: [
-            if (width > 881) Expanded(flex: 3, child: Menu()),
+            if (width > 900) Expanded(flex: 3, child: Menu()),
             Expanded(
                 flex: 7,
                 child: ListChat(
-                  onMenuOpen: width > 881
+                  onOpenMenu: width > 900
                       ? null
                       : () {
                           _key.currentState.openDrawer();
