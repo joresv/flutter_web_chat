@@ -34397,7 +34397,7 @@ $S:1}
 Y.BI.prototype={
 J:function(a,b){var s,r,q=null,p=t.w,o=b.X(p).f,n=b.X(p).f.a.a
 P.z9(n)
-p=n>900
+p=n>1000
 s=p?q:M.aP(q,new D.ol(q),C.k,q,q,q,q,q,q,q,q,q,250)
 r=H.c([],t.Z)
 if(p)r.push(T.e6(new D.ol(q),3))
