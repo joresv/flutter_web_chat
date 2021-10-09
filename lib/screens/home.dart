@@ -12,7 +12,7 @@ class HomePage extends StatelessWidget {
     print(width);
     return Scaffold(
       key: _key,
-      drawer: width > 900
+      drawer: width > 1600
           ? null
           : Container(
               width: 250,
@@ -23,11 +23,11 @@ class HomePage extends StatelessWidget {
         height: height,
         child: Row(
           children: [
-            if (width > 900) Expanded(flex: 3, child: Menu()),
+            if (width > 1600) Expanded(flex: 3, child: Menu()),
             Expanded(
                 flex: 7,
                 child: ListChat(
-                  onOpenMenu: width > 900
+                  onOpenMenu: width > 1600
                       ? null
                       : () {
                           _key.currentState.openDrawer();
